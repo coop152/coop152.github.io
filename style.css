@@ -1,23 +1,23 @@
-.SmallPart{
+.SmallPart {
 	margin: auto;
-	width: 60%;
+	width: auto;
 	text-align: center;
 	padding: 10px;	
 	
-	font-size: 2vw;
+	font-size: 2rem;
 }
 
-.BigPart{
+.BigPart {
 	margin: auto;
 	margin-top: 150px;
-	width: 60%;
+	width: 80%;
 	text-align: center;
-	border: 1vw white solid;
+	border: 0.5rem white solid;
 	background: rgb(255,255,255,0.1);
 	padding: 10px;	
 	
-	font-size: 10vw;
-	text-shadow: 0.5vw 0.5vw black;
+	font-size: 10rem;
+	text-shadow: 0.5rem 0.5rem black;
 }
 
 p{
