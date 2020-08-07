@@ -1,31 +1,33 @@
-.SmallPart {
-	margin: auto;
-	width: auto;
-	text-align: center;
-	padding: 10px;	
-	
-	font-size: 2rem;
-}
+/* CSS is how you can add style to your website, such as colors, fonts, and positioning of your
+   HTML content. To learn how to do something, just try searching Google for questions like
+   "how to change link color." */
 
-.BigPart {
-	margin: auto;
-	margin-top: 150px;
-	width: 80%;
-	text-align: center;
-	border: 0.5rem white solid;
-	background: rgb(255,255,255,0.1);
-	padding: 10px;	
-	
-	font-size: 10rem;
-	text-shadow: 0.5rem 0.5rem black;
+body {
+  background-color: #2c2f33;
+  color: white;
+  font-family: "Arial";
 }
-
-p{
-	font-family: Roboto, Helvetica, sans-serif;
-	font-weight: bold;
-	color: white;
+h1 {
+  font-family: "Comic Sans MS";
+  font-size: 64px;
+  color: orange;
+  margin: 15px;
 }
-body{
-	background: #121212;
-	
+a {
+  color: orange;
+}
+img {
+  padding: 15px;
+}
+table,th,td {
+  border: 2px solid white;
+  border-collapse: collapse;
+}
+table {
+  border: 3px solid white;
+}
+th, td {
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

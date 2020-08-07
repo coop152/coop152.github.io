@@ -1,0 +1,31 @@
+.SmallPart {
+	margin: auto;
+	width: auto;
+	text-align: center;
+	padding: 10px;	
+	
+	font-size: 2rem;
+}
+
+.BigPart {
+	margin: auto;
+	margin-top: 150px;
+	width: 80%;
+	text-align: center;
+	border: 0.5rem white solid;
+	background: rgb(255,255,255,0.1);
+	padding: 10px;	
+	
+	font-size: 10rem;
+	text-shadow: 0.5rem 0.5rem black;
+}
+
+p{
+	font-family: Roboto, Helvetica, sans-serif;
+	font-weight: bold;
+	color: white;
+}
+body{
+	background: #121212;
+	
+}
