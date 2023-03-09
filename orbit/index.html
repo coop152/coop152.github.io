@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Computing Lab 2</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="module">
+        import * as THREE from "https://unpkg.com/three/build/three.module.js";
+
+        import { OrbitControls } from "https://web.cs.manchester.ac.uk/three/three.js-master/examples/jsm/controls/OrbitControls.js";
+
+        var scene, camera, renderer;
+
+        const loader = new THREE.TextureLoader();
+
+        var controls;
+
+        var sun, earth, moon;
+        var earthSystem;
+        var time = 0;
+        var orbitRadius = 50;
+        var earthOrbit = new THREE.EllipseCurve(0, 0, 350, 300); // elliptical orbit
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
+            camera.position.set(0, 30, 1000);
+
+            renderer = new THREE.WebGLRenderer({antialias: true});
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            controls = new OrbitControls(camera, renderer.domElement);
+            controls.autoRotate = true;
+
+            sun = new THREE.Mesh(new THREE.SphereGeometry(109, 400, 200), new THREE.MeshStandardMaterial({
+                emissive: 0xffffff,
+                emissiveMap: loader.load("sun.jpg"),
+                emissiveIntensity: 1,
+            }));
+            scene.add(sun);
+            let light = new THREE.PointLight(0xffffff, 1);
+            scene.add(light);
+            //scene.add(new THREE.AmbientLight(0x121212));
+            //scene.background = new THREE.Color(0x121212);
+
+            earthSystem = new THREE.Group();
+            earth = new THREE.Mesh(new THREE.SphereGeometry(25, 50, 50), new THREE.MeshPhongMaterial({
+                //color: 0x1212EE,
+                map: loader.load("earth.jpg")
+            }));
+            earthSystem.add(earth);
+            moon = new THREE.Mesh(new THREE.SphereGeometry(5, 40, 20), new THREE.MeshPhongMaterial({
+                //color: 0x484848,
+                map: loader.load("moon.jpg")
+            }));
+            moon.position.set(orbitRadius, 0, 0);
+            earthSystem.add(moon);
+            scene.add(earthSystem);
+
+            const lineGeometry = new THREE.BufferGeometry().setFromPoints(earthOrbit.getPoints(50));
+            const lineMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 });
+            const line = new THREE.Line(lineGeometry, lineMaterial);
+            line.rotation.x = Math.PI / 2;
+            scene.add(line);
+        }
+
+        function animate() {
+            const secondsPerDay = 1; // animate at 1 second per "simulated day"
+            const earthSpeed = (1 / 10) / secondsPerDay; // earth orbits the sun in 10 days, just so the speeds are closer
+            const moonSpeed = 1 / secondsPerDay; // moon orbits the earth once per day
+            const sunSpeed = (1 / 50) / secondsPerDay; // sun spins around in 50 seconds, just because
+            time = (performance.now() / 1000); // in seconds
+            let [x, z] = [...earthOrbit.getPoint((time * earthSpeed) % 1)];
+            earthSystem.position.set(x, 0, z);
+            moon.position.x = orbitRadius * Math.cos(time * moonSpeed * 2 * Math.PI);
+            moon.position.z = orbitRadius * Math.sin(time * moonSpeed * 2 * Math.PI);
+            sun.rotation.y = time * sunSpeed * 2 * Math.PI;
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
+
+</body>
+
+</html>
