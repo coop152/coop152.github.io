@@ -7,15 +7,15 @@
   <link href="style.css" rel="stylesheet" type="text/css" media="all">
 </head>
 
-<body>
-<!--
-  <h1 align="center">funny site haha !!!! !</h1>
+<body id="body">
+
+  <h1 align="center">the Website</h1>
   <table align="center" style="width:auto">
     <tr>
-      <th>Thing</th>
-      <th>DL Link</th>
+      <th>Thing      <!--<div class="coolsplit"></div>--> </th>
+      <th>Link</th>
     </tr>
-    <tr>
+    <!-- <tr>
       <td>Minecraft Bedrock Meme Resource Pack</td>
       <td><a href="https://drive.google.com/open?id=1WWLrzbJZpWQjgicXDH8ayRwjeWGPYw6t">Google Drive</a></td>
     </tr>
@@ -26,11 +26,42 @@
     <tr>
       <td>Minecraft Bedrock Just Paintings Pack</td>
       <td><a href="https://drive.google.com/open?id=154kiJi4_fEHW2aN5MroE3kkXT0fnKhAe">Google Drive</a></td>
+    </tr> -->
+    <tr>
+      <td>nifty little thing</td>
+      <td><a href="/orbit">it spins</a></td>
+    </tr>
+    <tr>
+      <td>assorted files</td>
+      <td><a href="/files">it don't spins</a></td>
     </tr>
   </table>
-  <p align="center"> <img src="zigzagzona.png" alt="Ziggy Azalea" width="20%" height="20%"> </p>
--->
-<a href="/files"> files here </a>
+
+  <!-- <a href="/orbit"> nifty little thing </a>
+  <br>
+  <a href="/files"> files here </a> -->
+  <script lang="js">
+    function swaptheme() {
+      let style = window.getComputedStyle(document.getElementById("body"));
+      if (style.getPropertyValue("--background") == "#282A36") {
+        // in dark mode
+        console.log("switching to light");
+        
+        document.documentElement.style.setProperty("--background", "#FFFBEB")
+        document.documentElement.style.setProperty("--foreground", "#1F1F1F")
+        document.documentElement.style.setProperty("--accent", "#A34D14")
+      }
+      else {
+        // in light mode
+        console.log("switching to dark");
+
+        document.documentElement.style.setProperty("--background", "#282A36")
+        document.documentElement.style.setProperty("--foreground", "#F8F8F2")
+        document.documentElement.style.setProperty("--accent", "#FFB86C")
+      }
+    }
+  </script>
+   <img onclick="swaptheme()" src="zigzagzona.png" alt="Ziggy Azalea" style="position: fixed; bottom: -10%; right:-20%; width: 50%; opacity: 100%;">
 </body>
 
 </html>

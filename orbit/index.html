@@ -12,13 +12,21 @@
             overflow: hidden;
         }
     </style>
+    <script type="importmap">
+        {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.143.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.143.0/examples/jsm/"
+        }
+        }
+    </script>
 </head>
 
 <body>
     <script type="module">
-        import * as THREE from "https://unpkg.com/three/build/three.module.js";
+        import * as THREE from "three";
 
-        import { OrbitControls } from "https://web.cs.manchester.ac.uk/three/three.js-master/examples/jsm/controls/OrbitControls.js";
+        import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
         var scene, camera, renderer;
 
